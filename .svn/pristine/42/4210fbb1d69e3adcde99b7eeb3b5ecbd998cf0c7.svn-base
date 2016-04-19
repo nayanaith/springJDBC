@@ -1,0 +1,86 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+	<bean id="dataSource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	        <property name="url" value="jdbc:oracle:thin:@ot1s.grhq.gfs.com:45006:ot1s" />
+		<property name="username" value="mwoodworth" />
+		<property name="password" value="Tigers!1" />
+	</bean>
+ 
+ 	<bean id="glazierCustomerDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.ChainCodeToFamilyDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+        
+        <bean id="glazierBilltoDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.BilltoToBilltoDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+        
+        <bean id="glazierLegalOwnerDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.GlazierInfoToLegalOwnerDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+        
+        <bean id="glazierCustUnitDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.GlazierShiptoInfoToGFSCustUnitDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+
+        <bean id="glazierCustUnitTaxDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.GlazierShiptoInfoToGFSCustUnitTaxDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+        </bean>
+                      
+    	<bean id="glzrShpToAdrsInfoToGFScustUnitSiteInfoDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.GlzrShpToAdrsInfoToGFScustUnitSiteInfoDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean> 
+        
+    	<bean id="glazierCustClassDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.GlazierShiptoClassToGFSCustomerClassDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+        	           
+	<bean id="shipToToCustomerMembershipImplDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.ShipToToCustomerMembershipDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+	
+				<bean id="parentCodeToPmgDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.ParentCodeToPmgDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+	
+				<bean id="chainMembershipToPmgMembershipDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.ChainMembershipToPmgMembershipDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+	
+				<bean id="avendraMembrshpToPmgMembrshpDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.AvendraMembrshpToPmgMembrshpDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+	
+				<bean id="customerInfoToCustomrUnitContactDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.CustomerInfoToCustomrUnitContactDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+	
+				<bean id="glazierCustomerNoteToGfsCustomerNoteDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.GlazierCustomerNoteToGfsCustomerNoteDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+	
+					<bean id="shipToToCustomerMembershipDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.ShipToToCustomerMembershipDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+						<bean id="shipToToCustomerPreferenceDao"
+            class="com.gfs.integration.glazier.automation.dao.impl.ShipToToCustomerPreferenceDaoImpl"> 
+            <constructor-arg ref="dataSource" />
+	</bean>
+</beans>
